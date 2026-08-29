@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p class="light-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est laborum perspiciatis ullam, aliquam eius deserunt iusto autem. Cumque omnis, architecto nostrum voluptatum quis temporibus alias suscipit quod reprehenderit. Quis, esse.
+                            Review your items above and proceed to checkout when ready. All prices include taxes. You can apply a coupon code if you have one. We accept eSewa and credit card payments for your convenience.
                         </p>
                     </div>
                     <div class="col-md-3 offset-md-1">

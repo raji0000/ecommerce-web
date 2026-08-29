@@ -7,9 +7,9 @@
     <div class="hero-content">
         <div class="col-md-4 hero-text">
             <h3>
-                Welcome to the site Welcome to the site
+                Welcome to Our Store
             </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, assumenda. Culpa, libero.</p>
+            <p>Discover premium quality products at unbeatable prices. Shop our wide selection of items and enjoy fast, secure checkout with eSewa payment option.</p>
             <button class="btn custom-border my-2 my-sm-0">Shop</button>
             <button class="btn custom-border my-2 my-sm-0">Contact Us</button>
         </div>
@@ -19,8 +19,8 @@
 <!-- start page content -->
 <div class="container">
     <div class="content-head">
-        <h2 style="text-align:center; font-weight: bold">Ecommerce</h2>
-        <p style="text-align: center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam accusamus eos quibusdam, esse voluptates voluptatibus id corporis facere neque amet alias molestias itaque ex porro architecto blanditiis distinctio maxime laboriosam.</h2>
+        <h2 style="text-align:center; font-weight: bold">Your Trusted Online Shopping Destination</h2>
+        <p style="text-align: center">We offer a curated selection of high-quality products delivered to your doorstep. With secure payment options including eSewa and credit card, shopping has never been easier. Browse our featured collection below and find exactly what you're looking for today.</p>
     </div>
     <h2 class="header text-center">Featured Products</h2>
     <!-- start products row -->

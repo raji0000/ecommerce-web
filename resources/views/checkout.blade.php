@@ -52,16 +52,152 @@
                         <input type="text" name="phone" class="form-control my-input" required>
                     </div>
                 </div>
-                <h2 style="margin-top:1em; margin-bottom:1em;">Payment details</h2>
+                <h2 style="margin-top:1em; margin-bottom:1em;">Payment Method</h2>
+                
+                <!-- Payment Method Selection -->
                 <div class="form-group">
-                    <label for="name_on_card" class="light-text">Name on card</label>
-                    <input type="text" name="name_on_card" class="form-control my-input" required>
+                    <label class="light-text">Select Payment Method</label>
+                    <div class="payment-method-selector">
+                        <div class="custom-control custom-radio" style="margin-bottom: 1em;">
+                            <input type="radio" class="custom-control-input" id="payment_esewa" name="payment_method" value="esewa" checked>
+                            <label class="custom-control-label" for="payment_esewa">
+                                <img src="https://esewa.com.np/static/assets/favicon.png" style="height: 20px; margin-right: 10px;" alt="eSewa"> eSewa
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="payment_card" name="payment_method" value="card">
+                            <label class="custom-control-label" for="payment_card">
+                                💳 Credit Card
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="credit_card" class="light-text">Credit Card</label>
-                    <input type="text" name="credit_card" class="form-control my-input" required>
+
+                <!-- eSewa Payment Form -->
+                <div id="esewa-payment-section" class="payment-section">
+                    <div class="esewa-container" style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin-top: 1.5em;">
+                        <h3 style="color: #239a3b; text-align: center; margin-bottom: 20px; font-weight: 600;">eSewa Payment</h3>
+                        
+                        <div class="form-group">
+                            <label for="esewa_id" class="light-text">
+                                <strong>eSewa ID (Merchant)</strong>
+                            </label>
+                            <div style="position: relative;">
+                                <span style="position: absolute; left: 12px; top: 10px; color: #239a3b; font-weight: 500;">Rs.</span>
+                                <input type="text" name="esewa_id" id="esewa_id" class="form-control my-input" placeholder="Enter Merchant eSewa ID" style="padding-left: 35px;" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="esewa_amount" class="light-text">
+                                <strong>Amount</strong>
+                            </label>
+                            <input type="text" name="esewa_amount" id="esewa_amount" class="form-control my-input" value="${{ format($total) }}" readonly style="background-color: #e9ecef;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="esewa_purpose" class="light-text">
+                                <strong>Purpose</strong>
+                            </label>
+                            <select name="esewa_purpose" id="esewa_purpose" class="form-control my-input" required>
+                                <option value="">Select Purpose</option>
+                                <option value="product_purchase">Product Purchase</option>
+                                <option value="online_shopping">Online Shopping</option>
+                                <option value="merchandise">Merchandise</option>
+                                <option value="utility">Utility Payment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="esewa_details" class="light-text">
+                                <strong>Details</strong>
+                            </label>
+                            <textarea name="esewa_details" id="esewa_details" class="form-control my-input" rows="3" placeholder="Add order details..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-block" style="background-color: #239a3b; color: white; border: none; padding: 12px; font-weight: 600; border-radius: 4px; font-size: 16px;">
+                            Proceed to eSewa
+                        </button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-success custom-border-success btn-block">Complete Order</button>
+
+                <!-- Credit Card Payment Form -->
+                <div id="card-payment-section" class="payment-section" style="display: none;">
+                    <div class="card-container" style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin-top: 1.5em;">
+                        <h3 style="color: #007bff; text-align: center; margin-bottom: 20px; font-weight: 600;">Credit Card Payment</h3>
+                        
+                        <div class="form-group">
+                            <label for="name_on_card" class="light-text">
+                                <strong>Name on Card</strong>
+                            </label>
+                            <input type="text" name="name_on_card" id="name_on_card" class="form-control my-input" placeholder="Full name as shown on card">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="credit_card" class="light-text">
+                                <strong>Credit Card Number</strong>
+                            </label>
+                            <input type="text" name="credit_card" id="credit_card" class="form-control my-input" placeholder="1234 5678 9012 3456">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="card_expiry" class="light-text">
+                                        <strong>Expiry Date</strong>
+                                    </label>
+                                    <input type="text" name="card_expiry" id="card_expiry" class="form-control my-input" placeholder="MM/YY">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="card_cvv" class="light-text">
+                                        <strong>CVV</strong>
+                                    </label>
+                                    <input type="text" name="card_cvv" id="card_cvv" class="form-control my-input" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success custom-border-success btn-block">
+                            Complete Order
+                        </button>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const esewaRadio = document.getElementById('payment_esewa');
+                        const cardRadio = document.getElementById('payment_card');
+                        const esewaSection = document.getElementById('esewa-payment-section');
+                        const cardSection = document.getElementById('card-payment-section');
+
+                        function updatePaymentDisplay() {
+                            if (esewaRadio.checked) {
+                                esewaSection.style.display = 'block';
+                                cardSection.style.display = 'none';
+                                document.getElementById('esewa_id').required = true;
+                                document.getElementById('esewa_purpose').required = true;
+                                document.getElementById('name_on_card').required = false;
+                                document.getElementById('credit_card').required = false;
+                            } else {
+                                esewaSection.style.display = 'none';
+                                cardSection.style.display = 'block';
+                                document.getElementById('esewa_id').required = false;
+                                document.getElementById('esewa_purpose').required = false;
+                                document.getElementById('name_on_card').required = true;
+                                document.getElementById('credit_card').required = true;
+                            }
+                        }
+
+                        esewaRadio.addEventListener('change', updatePaymentDisplay);
+                        cardRadio.addEventListener('change', updatePaymentDisplay);
+                        
+                        // Initialize on page load
+                        updatePaymentDisplay();
+                    });
+                </script>
             </form>
         </div>
         <div class="col-md-5 offset-md-1">
